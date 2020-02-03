@@ -1,0 +1,22 @@
+{
+  "name": "webpack-plugins",
+  "version": "1.0.0",
+  "description": "webpack-plugins",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DeanYCH/webpack-plugins.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DeanYCH/webpack-plugins/issues"
+  },
+  "homepage": "https://github.com/DeanYCH/webpack-plugins#readme",
+  "dependencies": {
+    "lerna": "3.20.2"
+  }
+}

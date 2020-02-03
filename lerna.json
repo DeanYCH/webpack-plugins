@@ -1,0 +1,20 @@
+{
+  "command": {
+    "init": {
+      "exact": true
+    },
+    "run": {
+      "npmClient": "yarn"
+    },
+    "bootstrap": {
+      "npmClientArgs": [
+        "--registry=https://registry.npm.taobao.org"
+      ]
+    }
+  },
+  "npmClient": "yarn",
+  "packages": [
+    "packages/*"
+  ],
+  "version": "0.0.0"
+}
