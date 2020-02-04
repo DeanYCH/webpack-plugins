@@ -10,6 +10,11 @@
       "npmClientArgs": [
         "--registry=https://registry.npm.taobao.org"
       ]
+    },
+    "command": {
+      "version": {
+        "allowBranch": ["master"]
+      }
     }
   },
   "npmClient": "yarn",

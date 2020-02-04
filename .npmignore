@@ -1,0 +1,7 @@
+.git 
+CVS 
+.svn 
+*.swp 
+.DS_Store 
+._* 
+npm-debug.log
