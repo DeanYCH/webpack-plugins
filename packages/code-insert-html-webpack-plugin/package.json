@@ -1,6 +1,6 @@
 {
   "name": "code-insert-html-webpack-plugin",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "insert code to htmlfile for html-webpack-plugin",
   "keywords": [
     "insert",
