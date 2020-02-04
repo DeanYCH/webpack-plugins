@@ -65,7 +65,7 @@ module.exports = {
             },],
         }
         return;
-    }),
+    }, {}),
     // 具名页面的方式覆盖上述的默认设置中的某些特殊页面
     'from-one': {
         before: [{
