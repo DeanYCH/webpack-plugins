@@ -88,3 +88,10 @@ module.exports = {
 > 代码片段对象：具有两个属性，scripts是代码片段字符串形成的数组，anchor为为该代码片段数组单独设定的【插入位置】
 > 代码片段：要插入的代码字符串
 > 导出的对象的属性名（例如’from-two‘）：会被解释为文件名（要对应的html文件的文件名）和正则表达式的字面量字符串，当某html文件名与导出对象的某个属性名相同，则插入这个属性名所对应的的代码片段，否则则用html文件名去匹配正则表达式，首先被匹配到的导出对象的属性名所对应的代码片段将被插入html文件中，匹配顺序为按照导出文件属性名的排列顺序自上而下
+
+### 为代码片段文件提供的全局函数
+
+> global.require：即 nodejs 提供的 require 函数；
+> global.webpack：即 webpack 的 compiler 实例的 options 属性；
+> global.env：即构建进程的 process.env；
+> global.console：即构建进程上下文的console对象；
