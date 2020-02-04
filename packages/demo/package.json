@@ -1,31 +1,27 @@
 {
-  "name": "test",
+  "name": "demo",
   "version": "0.0.0",
   "description": "test all webpack plugins",
   "keywords": [
-    "test",
+    "demo",
     "all"
   ],
   "author": "DeanYCH <jimmyjamesy@139.com>",
   "homepage": "https://github.com/DeanYCH/webpack-plugins/tree/master/packages/demo#readme",
   "license": "ISC",
-  "directories": {
-    "test": "__tests__"
-  },
-  "files": [
-    "lib"
-  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DeanYCH/webpack-plugins.git"
   },
   "scripts": {
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server --config ./webpack.config.js --open --progress",
+    "build": "webpack --config ./webpack.config.js --open --progress"
   },
   "bugs": {
     "url": "https://github.com/DeanYCH/webpack-plugins/issues"
   },
   "devDependencies": {
+    "@babel/core": "^7.8.4",
     "babel": "^6.23.0",
     "babel-loader": "^8.0.6",
     "code-insert-html-webpack-plugin": "^0.0.0",

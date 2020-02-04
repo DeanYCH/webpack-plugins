@@ -9,7 +9,7 @@
   "author": "DeanYCH <jimmyjamesy@139.com>",
   "homepage": "https://github.com/DeanYCH/webpack-plugins/tree/master/packages/code-insert-html-webpack-plugin#readme",
   "license": "ISC",
-  "main": "lib/code-insert-html-webpack-plugin.js",
+  "main": "lib/index.js",
   "directories": {
     "lib": "lib",
     "test": "__tests__"

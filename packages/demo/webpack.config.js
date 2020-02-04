@@ -1,9 +1,11 @@
+
 const path =require('path');
 const fs = require('fs-extra');
 const glob = require('glob');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CodeInsertPlugin = require('code-insert-html-webpack-plugin');
+
 
 const entryGlob = new glob.Glob(
     `${__dirname}/src/page/*.js`,
@@ -18,8 +20,8 @@ const entry = entryGlob.found.reduce((res, filedir) => {
 
 const htmlPlugins = Object.keys(entry).map((name) => {
     const filename = `${name}.html`;
-    const template = `${__dirname}/src/__html__tpl`;
-    const chunks = ['name'];
+    const template = `${__dirname}/src/__html__.tpl`;
+    const chunks = [name];
 
     return new HtmlWebpackPlugin({
         filename,
@@ -34,7 +36,7 @@ const htmlPlugins = Object.keys(entry).map((name) => {
     })
 });
 
-fs.existsSync('./dist');
+fs.emptyDirSync('./dist');
 
 module.exports = {
     target: 'web',
