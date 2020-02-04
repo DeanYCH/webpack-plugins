@@ -5,3 +5,6 @@ CVS
 .DS_Store 
 ._* 
 npm-debug.log
+yarn.lock
+package-lock.json
+CHANGELOG.md
