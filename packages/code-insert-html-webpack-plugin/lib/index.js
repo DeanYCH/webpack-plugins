@@ -12,7 +12,16 @@ class CodeInsertHtmlWebpackPlugin {
         this.sanbox = {
             ADD_HTML_PLUGIN: true,
             require,
-            env: { ...process.env }
+            env: { ...process.env },
+            console: Object.keys(console).reduce((res, funcName) => {
+                if(console[funcName] instanceof Function && !/^[A-Z]/.test(funcName)){
+                    res[funcName] = function(...args) {
+                        console[funcName](...args);
+                    }.bind(console);
+                }
+
+                return res;
+            }, {})
         };
         
         this.checkRegExp = /^\/.*\/[i|g|m]*$/;
@@ -81,7 +90,7 @@ class CodeInsertHtmlWebpackPlugin {
         const vmC = vm.createContext(sanbox);
         const res = vmS.runInContext(vmC);
 
-        return res
+        return res;
     }
     compilationFile(fatherCompilation, globalContext) {
         const { context, sourcePath, filePath, outputName, outputPath } = this.opt;

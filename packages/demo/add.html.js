@@ -18,8 +18,6 @@ const env = `<script>
   }(window);
 </script>`;
 
-console.log('=====================', entry)
-
 module.exports = {
     // 通过entry做默认设置
     ...Object.keys(entry).reduce((res, entryName) => {
@@ -34,7 +32,7 @@ module.exports = {
             },],
         }
         return res;
-    }),
+    }, {}),
     // 具名页面的方式覆盖上述的默认设置中的某些特殊页面
     'from-one': {
         before: [{
