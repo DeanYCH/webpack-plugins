@@ -9,8 +9,8 @@
 const codeInsertPlugin = require('code-insert-html-webpack-plugin');
 
 new CodeInsertPlugin({
-    sourcePath: './add.html.js',
-    defaultAnchor: '</head>',
+    sourcePath: './add.html.js', // 默认代码片段文件位置 /add.html.js
+    defaultAnchor: '</head>', // 默认代码插入位置
 })
 
 ```
