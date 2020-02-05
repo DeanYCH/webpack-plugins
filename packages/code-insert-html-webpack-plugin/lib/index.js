@@ -35,7 +35,7 @@ class CodeInsertHtmlWebpackPlugin {
             defaultAnchor: '</head>',
         }
 
-        this.opt = { ...defaultOpt, opt };
+        this.opt = { ...defaultOpt, ...opt };
         this.opt['filePath'] = this.getFilePath();
     }
     apply(compiler) {
