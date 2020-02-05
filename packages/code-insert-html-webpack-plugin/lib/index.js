@@ -3,9 +3,10 @@ const vm = require('vm');
 const path = require('path');
 const _ = require('lodash');
 
-// const NodeTemplatePlugin = require('webpack/lib/node/NodeTemplatePlugin');
 const SingleEntryPlugin = require('webpack/lib/SingleEntryPlugin');
-
+const NodeTemplatePlugin = require('webpack/lib/node/NodeTemplatePlugin');
+const NodeTargetPlugin = require('webpack/lib/node/NodeTargetPlugin');
+const LoaderTargetPlugin = require('webpack/lib/LoaderTargetPlugin');
 
 class CodeInsertHtmlWebpackPlugin {
     constructor(opt = {}) {
@@ -33,6 +34,9 @@ class CodeInsertHtmlWebpackPlugin {
             outputPath: path.resolve(__dirname, '../log'),
             // 设置在什么标签前插入脚本
             defaultAnchor: '</head>',
+            // 代码片段文件中导出的对象属性名 与 期望对应的真实文件名的差距，
+            // 该前缀将加入到代码片段模块全部的标识html文件名的属性名之前
+            htmlNamePrefix: '',
         }
 
         this.opt = { ...defaultOpt, ...opt };
@@ -103,8 +107,10 @@ class CodeInsertHtmlWebpackPlugin {
         const childCompiler = fatherCompilation.createChildCompiler(compilerName, outputOptions);
         childCompiler.context = globalContext;
 
-        // new NodeTemplatePlugin(outputOptions).apply(childCompiler);
+        new NodeTemplatePlugin(outputOptions).apply(childCompiler);
+        new NodeTargetPlugin().apply(childCompiler);
         new SingleEntryPlugin(globalContext, filePath, undefined).apply(childCompiler);
+        new LoaderTargetPlugin('node').apply(childCompiler);
 
         childCompiler.plugin('compilation', compilation => {
             if (compilation.cache) {
@@ -145,15 +151,20 @@ class CodeInsertHtmlWebpackPlugin {
         return 'code-insert-html-webpack-plugin for "' + (absolutePath.length < relativePath.length ? absolutePath : relativePath) + '"';
     }
     equipScript(root, scripts, time, callback) {
-        const { outputName } = root;
-        const entryName = outputName.split('.')[0];
+        const { filename: outputName } = root.plugin.options;
+        const { htmlNamePrefix } = this.opt;
 
-        let script = scripts[entryName];
+        let htmlName = outputName.split('.')[0];
+        if (htmlName.indexOf(htmlNamePrefix) !== -1) {
+            htmlName = htmlName.slice(htmlNamePrefix.length);
+        }
+
+        let script = scripts[htmlName];
 
         // 支持正则表达式的entryName
         if (!script) {
             for(let i = 0; i<this.htmlNameRegs.length; i++){
-                if(this.htmlNameRegs[i].test(entryName)){
+                if(this.htmlNameRegs[i].test(htmlName)){
                     script = this.htmlNamesRegMap.get(this.htmlNameRegs[i])
                     break;
                 }
