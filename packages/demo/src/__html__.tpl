@@ -3,6 +3,6 @@
     <!-- something inserted -->
     </head>
     <body>
-    <div></div>
+    <div id=root></div>
     </body>
 </html>

@@ -94,7 +94,7 @@ class CodeInsertHtmlWebpackPlugin {
         const vmC = vm.createContext(sanbox);
         const res = vmS.runInContext(vmC);
 
-        return res;
+        return res && res['default'] ? res['default'] : res;
     }
     compilationFile(fatherCompilation, globalContext) {
         const { context, sourcePath, filePath, outputName, outputPath } = this.opt;

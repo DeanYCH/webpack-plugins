@@ -104,7 +104,14 @@ module.exports = {
 
 ### 插件为代码片段文件提供的全局函数
 
-> global.require：即 nodejs 提供的 require 函数；
-> global.webpack：即 webpack 的 compiler 实例的 options 属性；
-> global.env：即构建进程的 process.env；
-> global.console：即构建进程上下文的console对象；
+global.require：即 nodejs 提供的 require 函数；
+> 在代码片段文件中，global.require 不等于 require ,global.require要求传入绝对路径用来寻找目标文件
+global.webpack：即 webpack 的 compiler 实例的 options 属性；
+global.env：即构建进程的 process.env；
+global.console：即构建进程上下文的console对象；
+
+## TODO
+### 有时 该插件 会与 ’@babel/plugin-transform-runtime’ 产生冲突
+解决方式：使用 ‘export default’ 替代 ‘module.exports’,
+
+_尽量不要将页面名称写为‘default’_

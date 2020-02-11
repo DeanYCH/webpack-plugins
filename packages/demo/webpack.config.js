@@ -46,7 +46,7 @@ module.exports = {
         publicPath: '/',
         filename: '[name].[hash:7].js',
     },
-    mode: 'development',
+    mode: 'production',
     devServer: {
         contentBase: 'dist',
         disableHostCheck: true,
@@ -76,4 +76,7 @@ module.exports = {
             defaultAnchor: '</head>',
         }),
     ],
+    resolve:{
+        mainFields: ['main','module'],
+    },
 };

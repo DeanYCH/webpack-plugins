@@ -18,7 +18,7 @@ const env = `<script>
   }(window);
 </script>`;
 
-module.exports = {
+const codes = {
     // 通过entry做默认设置
     ...Object.keys(entry).reduce((res, entryName) => {
         res[entryName] = {
@@ -49,4 +49,6 @@ module.exports = {
             anchor: '</body>',
         },],
     },
-}
+};
+
+export default codes;
